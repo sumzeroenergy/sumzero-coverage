@@ -7,6 +7,7 @@ import ThreeLayers from "@/components/coverage/welcome/ThreeLayers"
 import EligibleEquipment from "@/components/coverage/welcome/EligibleEquipment"
 import OneCall from "@/components/coverage/welcome/OneCall"
 import WhileYoureHere from "@/components/coverage/welcome/WhileYoureHere"
+import Questions from "@/components/coverage/welcome/Questions"
 import AddCoverageModal, { openAddCoverageModal } from "@/components/AddCoverageModal"
 
 const NAV_LINKS: { label: string; href: string }[] = []
@@ -26,6 +27,7 @@ export default function CoverageWelcomePage() {
       <EligibleEquipment />
       <OneCall />
       <WhileYoureHere />
+      <Questions />
     </main>
   )
 }
