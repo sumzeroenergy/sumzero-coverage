@@ -32,7 +32,7 @@ export default function Hero() {
               alt="SumZero PROTECT+"
               width={520}
               height={173}
-              className="w-auto h-auto max-w-[300px]"
+              className="w-auto h-auto max-w-[360px]"
               priority
             />
           </div>
