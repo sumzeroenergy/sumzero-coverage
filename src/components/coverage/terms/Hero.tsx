@@ -39,8 +39,10 @@ export default function Hero() {
             </h1>
 
             {/* Obligor line */}
-            <p className="text-[14px] text-white/40 font-medium">
-              Obligor: SumZero Energy Systems &nbsp;|&nbsp; Administrator: Magellan Service Corporation
+            <p className="text-[14px] text-white/50">
+              <span className="font-bold text-white/70">Obligor:</span> SumZero Energy Systems
+              <span className="mx-3 text-white/20">|</span>
+              <span className="font-bold text-white/70">Administrator:</span> Magellan Service Corporation
             </p>
           </motion.div>
         </div>
