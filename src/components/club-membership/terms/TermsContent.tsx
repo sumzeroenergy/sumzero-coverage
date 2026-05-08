@@ -31,7 +31,7 @@ function SideNav({ activeId }: { activeId: string }) {
           <button
             key={s.id}
             onClick={() => scrollTo(s.id)}
-            className={`w-full text-left flex items-center gap-3 px-3 py-2.5 rounded-lg text-[13px] transition-all duration-200 cursor-pointer ${
+            className={`w-full text-left flex items-center gap-3 px-3 py-2.5 rounded-lg text-[14px] transition-all duration-200 cursor-pointer ${
               activeId === s.id
                 ? "bg-[#96C83D]/10 text-[#1F2535] font-semibold"
                 : "text-[#5a6a7e] hover:bg-[#f1f3f6] hover:text-[#1F2535]"
