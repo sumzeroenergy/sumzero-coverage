@@ -98,16 +98,8 @@ export default function LayerThree({ onAddCoverage: openAddCoverage }: { onAddCo
           ))}
         </motion.div>
 
-        {/* Two-column: reviews + eligibility CTA */}
+        {/* Two-column: eligibility CTA + reviews */}
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-4">
-
-          {/* Reviews box */}
-          <div className="bg-[#1a2233] border border-white/8 rounded-xl px-6 py-6">
-            <div
-              className="elfsight-app-ede031bb-3d61-41d9-832a-f52b234baa35"
-              data-elfsight-app-lazy
-            />
-          </div>
 
           {/* Eligibility CTA box */}
           <div className="bg-[#1a2233] border border-white/8 rounded-xl px-7 py-8 flex flex-col justify-between gap-8">
@@ -135,6 +127,14 @@ export default function LayerThree({ onAddCoverage: openAddCoverage }: { onAddCo
                 You call (508) 965-0046 — we fix it.
               </p>
             </div>
+          </div>
+
+          {/* Reviews box — lighter background */}
+          <div className="bg-[#2a3a52] border border-white/8 rounded-xl px-6 py-6">
+            <div
+              className="elfsight-app-ede031bb-3d61-41d9-832a-f52b234baa35"
+              data-elfsight-app-lazy
+            />
           </div>
 
         </div>
