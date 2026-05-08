@@ -86,7 +86,7 @@ export default function Hero({ onRequestCall, onAddCoverage }: HeroProps) {
             {/* Headline */}
             <h1 className="text-4xl sm:text-5xl font-black uppercase leading-[1.05] tracking-tight mb-6">
               <StaggeredText
-                as="div"
+                as="span"
                 text="Your Warranty."
                 segmentBy="words"
                 direction="bottom"
@@ -97,7 +97,7 @@ export default function Hero({ onRequestCall, onAddCoverage }: HeroProps) {
                 className="text-white"
               />
               <StaggeredText
-                as="div"
+                as="span"
                 text="Every Detail."
                 segmentBy="words"
                 direction="bottom"

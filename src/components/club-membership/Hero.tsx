@@ -95,7 +95,7 @@ export default function Hero({ onJoinClick }: HeroProps) {
             {/* Headline */}
             <h1 className="text-4xl sm:text-5xl font-black uppercase leading-[1.05] tracking-tight mb-6">
               <StaggeredText
-                as="div"
+                as="span"
                 text="Your Systems."
                 segmentBy="words"
                 direction="bottom"
@@ -106,7 +106,7 @@ export default function Hero({ onJoinClick }: HeroProps) {
                 className="text-white"
               />
               <StaggeredText
-                as="div"
+                as="span"
                 text="Inspected."
                 segmentBy="words"
                 direction="bottom"
@@ -117,7 +117,7 @@ export default function Hero({ onJoinClick }: HeroProps) {
                 className="text-[#96C83D]"
               />
               <StaggeredText
-                as="div"
+                as="span"
                 text="Every Year."
                 segmentBy="words"
                 direction="bottom"
