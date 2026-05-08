@@ -1,12 +1,10 @@
 "use client"
 
 import { motion } from "motion/react"
-import { Wind, Flame, Droplets, Leaf } from "lucide-react"
 
 const GROUPS = [
   {
     title: "Heat Pumps & Cooling",
-    icon:  Wind,
     items: [
       { name: "Ductless Mini-Split Heat Pump",    years: "10 yr", primary: true },
       { name: "Central Heat Pump System",          years: "10 yr", primary: true },
@@ -18,7 +16,6 @@ const GROUPS = [
   },
   {
     title: "Heating",
-    icon:  Flame,
     items: [
       { name: "Gas Furnace",        years: "10 yr", primary: true },
       { name: "Gas Boiler",         years: "10 yr", primary: true },
@@ -27,7 +24,6 @@ const GROUPS = [
   },
   {
     title: "Water Heating",
-    icon:  Droplets,
     items: [
       { name: "Heat Pump Water Heater",            years: "10 yr", primary: true  },
       { name: "Tankless Water Heater",             years: "10 yr", primary: true  },
@@ -36,7 +32,6 @@ const GROUPS = [
   },
   {
     title: "Indoor Air Quality",
-    icon:  Leaf,
     items: [
       { name: "ERV / HRV Unit",           years: "5 yr", primary: false },
       { name: "Whole-Home Humidifier",    years: "5 yr", primary: false },
@@ -45,14 +40,11 @@ const GROUPS = [
   },
 ]
 
-function TableCard({ title, icon: Icon, items }: typeof GROUPS[0]) {
+function TableCard({ title, items }: typeof GROUPS[0]) {
   return (
     <div className="bg-white border border-[#e5e8ed] rounded-2xl overflow-hidden">
-      <div className="px-6 py-5 border-b border-[#e5e8ed] flex items-center justify-between">
-        <p className="text-[13px] font-black tracking-[0.2em] uppercase text-[#1F2535]">{title}</p>
-        <div className="w-8 h-8 rounded-lg bg-[#96C83D]/10 flex items-center justify-center flex-shrink-0">
-          <Icon size={16} className="text-[#96C83D]" />
-        </div>
+      <div className="px-6 py-5 border-b border-[#e5e8ed] bg-[#e8ecf1]">
+        <p className="text-[15px] font-black tracking-[0.2em] uppercase text-[#1F2535]">{title}</p>
       </div>
       <div className="flex flex-col">
         {items.map((item, i) => (
