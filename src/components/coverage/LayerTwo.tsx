@@ -77,7 +77,7 @@ export default function LayerTwo() {
                   className={`flex items-center gap-4 px-7 py-5 ${i < ITEMS.length - 1 ? "border-b border-[#e5e8ed]" : ""}`}
                 >
                   <span className="flex-shrink-0 w-3 h-3 rounded-full bg-[#96C83D]" />
-                  <span className="text-[24px] font-medium text-[#1F2535] leading-snug">{item}</span>
+                  <span className="text-[18px] font-medium text-[#1F2535] leading-snug">{item}</span>
                 </div>
               ))}
             </div>
