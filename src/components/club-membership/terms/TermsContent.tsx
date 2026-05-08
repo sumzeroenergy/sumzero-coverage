@@ -22,7 +22,7 @@ function SideNav({ activeId }: { activeId: string }) {
   }
 
   return (
-    <div className="sticky top-[190px] bg-white rounded-2xl border border-[#d0d7e2] overflow-hidden">
+    <div className="sticky top-[170px] bg-white rounded-2xl border border-[#d0d7e2] overflow-hidden self-start">
       <div className="px-5 py-4 border-b border-[#d0d7e2] flex items-center gap-2">
         <BookOpen size={15} className="text-[#96C83D]" />
         <p className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#96C83D]">Contents</p>
@@ -92,7 +92,7 @@ export default function TermsContent() {
   return (
     <section className="bg-[#f1f3f6] py-16">
       <div className="max-w-[90rem] mx-auto px-6 sm:px-10 lg:px-16">
-        <div className="flex gap-10 items-start">
+        <div className="flex gap-16">
 
           {/* Left — sticky nav */}
           <aside className="hidden lg:block w-80 flex-shrink-0">
