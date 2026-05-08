@@ -35,7 +35,7 @@ export default function CoveragePage() {
       <HowItWorks />
       <LayerOne />
       <LayerTwo />
-      <LayerThree onAddCoverage={openAddCoverageModal} />
+      <LayerThree />
     </main>
   )
 }

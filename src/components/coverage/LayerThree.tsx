@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import Script from "next/script"
 import { motion } from "motion/react"
 
 const CARDS = [
@@ -22,13 +23,11 @@ const CARDS = [
   },
 ]
 
-interface LayerThreeProps {
-  onAddCoverage: () => void
-}
-
-export default function LayerThree({ onAddCoverage }: LayerThreeProps) {
+export default function LayerThree() {
   return (
     <section className="bg-[#0f1520] py-24">
+      <Script src="https://elfsightcdn.com/platform.js" strategy="lazyOnload" />
+
       <div className="max-w-[90rem] mx-auto px-6 sm:px-10 lg:px-16">
 
         <motion.div
@@ -68,7 +67,7 @@ export default function LayerThree({ onAddCoverage }: LayerThreeProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12"
+          className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-16"
         >
           {CARDS.map((card, i) => (
             <motion.div
@@ -89,12 +88,8 @@ export default function LayerThree({ onAddCoverage }: LayerThreeProps) {
                 e.currentTarget.style.boxShadow = "none"
               }}
             >
-              {/* Top accent */}
               <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-[#96C83D] to-transparent" />
-
-              {/* Glow wash */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none bg-gradient-to-b from-[rgba(150,200,61,0.05)] to-transparent" />
-
               <div className="relative px-7 py-7">
                 <p className="text-[15px] font-bold text-[#96C83D] mb-3 uppercase tracking-wide">{card.title}</p>
                 <p className="text-[15px] leading-relaxed text-white/65">{card.body}</p>
@@ -103,20 +98,11 @@ export default function LayerThree({ onAddCoverage }: LayerThreeProps) {
           ))}
         </motion.div>
 
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.3 }}
-        >
-          <button
-            onClick={onAddCoverage}
-            className="bg-[#96C83D] hover:bg-[#7aaa28] text-white font-bold text-[17px] px-10 py-5 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-[#96C83D]/30 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
-          >
-            Add PROTECT+ Coverage →
-          </button>
-        </motion.div>
+        {/* Google Reviews embed */}
+        <div
+          className="elfsight-app-ede031bb-3d61-41d9-832a-f52b234baa35"
+          data-elfsight-app-lazy
+        />
 
       </div>
     </section>
