@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { AlertCircle } from "lucide-react"
+import { AlertCircle, BookOpen } from "lucide-react"
 
 const SECTIONS = [
   { id: "payment-terms",              label: "Payment Terms"             },
@@ -23,7 +23,8 @@ function SideNav({ activeId }: { activeId: string }) {
 
   return (
     <div className="sticky top-[190px] bg-white rounded-2xl border border-[#d0d7e2] overflow-hidden">
-      <div className="px-5 py-4 border-b border-[#d0d7e2]">
+      <div className="px-5 py-4 border-b border-[#d0d7e2] flex items-center gap-2">
+        <BookOpen size={15} className="text-[#96C83D]" />
         <p className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#96C83D]">Contents</p>
       </div>
       <nav className="px-3 py-3 flex flex-col gap-0.5">
@@ -31,7 +32,7 @@ function SideNav({ activeId }: { activeId: string }) {
           <button
             key={s.id}
             onClick={() => scrollTo(s.id)}
-            className={`w-full text-left flex items-center gap-3 px-3 py-2.5 rounded-lg text-[14px] transition-all duration-200 cursor-pointer ${
+            className={`w-full text-left flex items-center gap-3 px-3 py-2.5 rounded-lg text-[15px] transition-all duration-200 cursor-pointer ${
               activeId === s.id
                 ? "bg-[#96C83D]/10 text-[#1F2535] font-semibold"
                 : "text-[#5a6a7e] hover:bg-[#f1f3f6] hover:text-[#1F2535]"
@@ -94,7 +95,7 @@ export default function TermsContent() {
         <div className="flex gap-10 items-start">
 
           {/* Left — sticky nav */}
-          <aside className="hidden lg:block w-64 flex-shrink-0">
+          <aside className="hidden lg:block w-80 flex-shrink-0">
             <SideNav activeId={activeId} />
           </aside>
 
