@@ -14,12 +14,12 @@ export default function InstallationPromise() {
           transition={{ duration: 0.5 }}
           className="text-center max-w-[680px] mx-auto py-28"
         >
-          <p className="text-sm font-bold tracking-[0.25em] uppercase text-[#96C83D] mb-6">
+          <p className="text-[22px] font-bold tracking-[0.25em] uppercase text-[#96C83D] mb-6">
             The Promise
           </p>
-          <h2 className="text-5xl sm:text-6xl font-black leading-tight tracking-tight text-[#1F2535] mb-8">
-            Your installation is covered.{" "}
-            <span className="text-[#5a6a7e]">Here's the structure.</span>
+          <h2 className="text-5xl sm:text-6xl font-black leading-[1.1] tracking-tight mb-8">
+            <span className="block text-[#1F2535]">Your installation is covered.</span>
+            <span className="block text-[#5a6a7e]">Here's the structure.</span>
           </h2>
           <p className="text-[17px] leading-relaxed text-[#5a6a7e]">
             Every SumZero installation includes a workmanship guarantee from day one.{" "}
