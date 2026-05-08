@@ -54,7 +54,7 @@ function Card({ n, title, body }: { n: string; title: string; body: string }) {
 
 export default function ThreeLayers() {
   return (
-    <section className="bg-white py-20">
+    <section className="bg-[#eef1f3] py-20">
       <div className="max-w-[90rem] mx-auto px-6 sm:px-10 lg:px-16">
 
         <motion.div

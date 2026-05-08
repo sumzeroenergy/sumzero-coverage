@@ -5,7 +5,7 @@ import { motion } from "motion/react"
 
 export default function FromTheOwners() {
   return (
-    <section className="bg-[#eef1f3] py-24">
+    <section className="bg-white py-24">
       <div className="max-w-[90rem] mx-auto px-6 sm:px-10 lg:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
