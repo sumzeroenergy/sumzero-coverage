@@ -13,7 +13,7 @@ export default function ProtectTermsPage() {
       <AddCoverageModal />
       <Header
         navLinks={NAV_LINKS}
-        ctaLabel="Add Coverage"
+        ctaLabel="SumZero PROTECT+"
         onCtaClick={openAddCoverageModal}
       />
       <Hero />
