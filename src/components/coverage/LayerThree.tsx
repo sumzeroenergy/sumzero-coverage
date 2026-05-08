@@ -132,7 +132,7 @@ export default function LayerThree({ onAddCoverage: openAddCoverage }: { onAddCo
           </div>
 
           {/* Reviews box — lighter background, centered */}
-          <div className="bg-[#2a3a52] border border-white/8 rounded-xl px-6 py-6 flex items-center justify-center">
+          <div className="bg-[#f1f3f6] border border-white/8 rounded-xl px-6 py-6 flex items-center justify-center">
             <div
               className="elfsight-app-ede031bb-3d61-41d9-832a-f52b234baa35"
               data-elfsight-app-lazy
