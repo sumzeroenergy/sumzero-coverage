@@ -17,7 +17,10 @@ export const metadata: Metadata = {
   title: "SumZero Energy Systems",
   description: "SumZero Energy Systems — HVAC services for Greater Boston & MetroWest.",
   icons: {
-    icon:  "/favicon.png",
+    icon:  [
+      { url: "/favicon.ico" },
+      { url: "/favicon.png", type: "image/png" },
+    ],
     apple: "/favicon.png",
   },
 };

@@ -22,7 +22,7 @@ function SideNav({ activeId }: { activeId: string }) {
   }
 
   return (
-    <div className="sticky top-[170px] bg-white rounded-2xl border border-[#d0d7e2] overflow-hidden self-start">
+    <div className="sticky top-[170px] bg-white rounded-xl border border-[#d0d7e2] overflow-hidden self-start">
       <div className="px-5 py-4 border-b border-[#d0d7e2] flex items-center gap-2">
         <BookOpen size={15} className="text-[#96C83D]" />
         <p className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#96C83D]">Contents</p>
@@ -32,7 +32,7 @@ function SideNav({ activeId }: { activeId: string }) {
           <button
             key={s.id}
             onClick={() => scrollTo(s.id)}
-            className={`w-full text-left flex items-center gap-3 px-3 py-2.5 rounded-lg text-[15px] transition-all duration-200 cursor-pointer ${
+            className={`w-full text-left flex items-center gap-3 px-3 py-2.5 rounded-md text-[15px] transition-all duration-200 cursor-pointer ${
               activeId === s.id
                 ? "bg-[#96C83D]/10 text-[#1F2535] font-semibold"
                 : "text-[#5a6a7e] hover:bg-[#f1f3f6] hover:text-[#1F2535]"
@@ -103,7 +103,7 @@ export default function TermsContent() {
           <div className="flex-1 min-w-0">
 
             {/* Intro box */}
-            <div className="bg-[#0f1520] rounded-2xl px-7 py-7 mb-12 flex gap-5 items-center">
+            <div className="bg-[#0f1520] rounded-xl px-7 py-7 mb-12 flex gap-5 items-center">
               <AlertCircle size={36} className="text-[#96C83D] flex-shrink-0" />
               <p className="text-[15px] leading-relaxed text-white/75">
                 <span className="font-bold text-white">Please read these terms carefully before enrolling.</span>{" "}
