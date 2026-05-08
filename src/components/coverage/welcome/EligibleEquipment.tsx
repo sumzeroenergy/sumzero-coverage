@@ -108,6 +108,39 @@ export default function EligibleEquipment() {
           ))}
         </motion.div>
 
+        {/* Not covered */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="mt-4 bg-[#f1f3f6] border border-[#e5e8ed] rounded-2xl px-6 py-5"
+        >
+          <p className="text-[11px] font-black tracking-[0.2em] uppercase text-[#5a6a7e] mb-4">
+            Not Covered by This Warranty
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {[
+              "Electrical panels & wiring",
+              "Plumbing pipes & fixtures",
+              "Sump pumps & drainage",
+              "Solar panels & battery storage",
+              "Gas fireplaces & wood stoves",
+              "Ductwork & air distribution",
+              "Water filtration & softening",
+              "Routine maintenance & filters",
+              "Cosmetic damage",
+            ].map((item) => (
+              <span
+                key={item}
+                className="text-[14px] text-[#5a6a7e] bg-white border border-[#d0d7e2] px-4 py-2 rounded-lg"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
+        </motion.div>
+
       </div>
     </section>
   )
