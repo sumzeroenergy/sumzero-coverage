@@ -46,13 +46,13 @@ export default function Timeline() {
           transition={{ duration: 0.5 }}
           className="mb-14"
         >
-          <p className="text-xs font-bold tracking-[0.25em] uppercase text-[#96C83D] mb-3">
+          <p className="text-sm font-bold tracking-[0.25em] uppercase text-[#96C83D] mb-4">
             How It All Works
           </p>
-          <h2 className="text-5xl sm:text-6xl font-black leading-tight tracking-tight text-[#1F2535] mb-4">
+          <h2 className="text-5xl sm:text-7xl font-black leading-tight tracking-tight text-[#1F2535] mb-5">
             From install day forward.
           </h2>
-          <p className="text-[18px] leading-relaxed text-[#5a6a7e] max-w-[640px]">
+          <p className="text-[21px] leading-relaxed text-[#5a6a7e] max-w-[640px]">
             Your coverage doesn't start when something breaks. It starts the day we install your system.
           </p>
         </motion.div>
@@ -71,7 +71,7 @@ export default function Timeline() {
               {/* Left — circle + line */}
               <div className="flex flex-col items-center flex-shrink-0">
                 <div
-                  className={`w-12 h-12 rounded-full flex items-center justify-center font-black text-[15px] flex-shrink-0 ${
+                  className={`w-16 h-16 rounded-full flex items-center justify-center font-black text-[18px] flex-shrink-0 ${
                     step.active
                       ? "bg-[#96C83D] text-white"
                       : "bg-[#d0d7e2] text-[#5a6a7e]"
@@ -86,10 +86,10 @@ export default function Timeline() {
 
               {/* Right — content */}
               <div className={`pb-12 ${i === STEPS.length - 1 ? "pb-0" : ""}`}>
-                <h3 className="text-[20px] font-black text-[#1F2535] mb-2 leading-snug">{step.title}</h3>
-                <p className="text-[16px] leading-relaxed text-[#5a6a7e] mb-4">{step.body}</p>
+                <h3 className="text-[26px] font-black text-[#1F2535] mb-3 leading-snug">{step.title}</h3>
+                <p className="text-[18px] leading-relaxed text-[#5a6a7e] mb-5">{step.body}</p>
                 <span
-                  className={`inline-block text-[11px] font-bold tracking-[0.18em] uppercase px-4 py-2 rounded-full ${
+                  className={`inline-block text-[13px] font-bold tracking-[0.18em] uppercase px-5 py-2.5 rounded-full ${
                     step.active
                       ? "bg-[#96C83D]/12 text-[#4a6a1a]"
                       : "bg-[#d0d7e2]/60 text-[#5a6a7e]"
