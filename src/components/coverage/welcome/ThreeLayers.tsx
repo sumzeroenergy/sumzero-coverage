@@ -64,7 +64,7 @@ export default function ThreeLayers() {
           transition={{ duration: 0.5 }}
           className="mb-12"
         >
-          <p className="text-xs font-bold tracking-[0.25em] uppercase text-[#96C83D] mb-4">
+          <p className="text-[17px] font-bold tracking-[0.25em] uppercase text-[#96C83D] mb-4">
             What's Included
           </p>
           <h2 className="text-4xl sm:text-5xl font-black leading-tight tracking-tight text-[#1F2535] mb-4">
