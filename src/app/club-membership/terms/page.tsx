@@ -2,6 +2,7 @@
 
 import Header from "@/components/layout/Header"
 import Hero from "@/components/club-membership/terms/Hero"
+import TermsContent from "@/components/club-membership/terms/TermsContent"
 import BookingModal from "@/components/BookingModal"
 import { openBookingModal } from "@/lib/booking-modal"
 
@@ -17,6 +18,7 @@ export default function ClubMembershipTermsPage() {
         onCtaClick={openBookingModal}
       />
       <Hero />
+      <TermsContent />
     </main>
   )
 }
