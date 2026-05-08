@@ -44,7 +44,7 @@ export default function LayerThree({ onAddCoverage }: LayerThreeProps) {
               alt="SumZero PROTECT+"
               width={520}
               height={173}
-              className="w-auto h-auto max-w-[260px]"
+              className="w-auto h-auto max-w-[338px]"
             />
           </div>
 
@@ -77,10 +77,28 @@ export default function LayerThree({ onAddCoverage }: LayerThreeProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.15 + i * 0.07 }}
-              className="bg-[#141c2a] border border-white/8 rounded-xl px-7 py-6"
+              whileHover={{ y: -4 }}
+              className="group relative bg-[#141c2a] rounded-xl overflow-hidden cursor-default"
+              style={{ border: "1px solid rgba(150,200,61,0.15)", transition: "border-color 0.3s, box-shadow 0.3s" }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = "rgba(150,200,61,0.40)"
+                e.currentTarget.style.boxShadow = "0 16px 48px rgba(150,200,61,0.08)"
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = "rgba(150,200,61,0.15)"
+                e.currentTarget.style.boxShadow = "none"
+              }}
             >
-              <p className="text-[15px] font-bold text-[#96C83D] mb-3">{card.title}</p>
-              <p className="text-[15px] leading-relaxed text-white/65">{card.body}</p>
+              {/* Top accent */}
+              <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-[#96C83D] to-transparent" />
+
+              {/* Glow wash */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none bg-gradient-to-b from-[rgba(150,200,61,0.05)] to-transparent" />
+
+              <div className="relative px-7 py-7">
+                <p className="text-[15px] font-bold text-[#96C83D] mb-3 uppercase tracking-wide">{card.title}</p>
+                <p className="text-[15px] leading-relaxed text-white/65">{card.body}</p>
+              </div>
             </motion.div>
           ))}
         </motion.div>
