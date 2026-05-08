@@ -102,10 +102,10 @@ export default function TermsContent() {
           <div className="flex-1 min-w-0">
 
             {/* Intro box */}
-            <div className="bg-white border border-[#96C83D]/40 rounded-2xl px-7 py-6 mb-12 flex gap-4">
-              <AlertCircle size={20} className="text-[#96C83D] flex-shrink-0 mt-0.5" />
-              <p className="text-[15px] leading-relaxed text-[#3a4557]">
-                <span className="font-semibold text-[#1F2535]">Please read these terms carefully before enrolling.</span>{" "}
+            <div className="bg-[#0f1520] rounded-2xl px-7 py-7 mb-12 flex gap-5 items-center">
+              <AlertCircle size={36} className="text-[#96C83D] flex-shrink-0" />
+              <p className="text-[15px] leading-relaxed text-white/75">
+                <span className="font-bold text-white">Please read these terms carefully before enrolling.</span>{" "}
                 By signing a SumZero Comfort Club Agreement (SCCA), each party agrees to be bound by these Terms and Conditions,
                 including signed proposals, payment terms, policies, practices, rules, standards, and guidelines provided in writing
                 related to the services (collectively the &ldquo;Agreement&rdquo;).
