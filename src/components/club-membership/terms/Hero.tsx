@@ -42,17 +42,17 @@ export default function Hero() {
       </section>
 
       {/* Breadcrumb bar */}
-      <div className="bg-[#0f1520] border-t border-[#96C83D]/20">
+      <div className="bg-[#96C83D]">
         <div className="max-w-[90rem] mx-auto px-6 sm:px-10 lg:px-16">
           <div className="flex items-center gap-1.5 py-3 text-[13px]">
             <Link
               href="/club-membership"
-              className="text-[#96C83D] hover:text-white transition-colors duration-200 font-medium cursor-pointer"
+              className="text-[#0f1520] hover:text-white transition-colors duration-200 font-semibold cursor-pointer"
             >
               Club Membership
             </Link>
-            <ChevronRight size={13} className="text-white/30" />
-            <span className="text-white/50">Terms &amp; Conditions</span>
+            <ChevronRight size={13} className="text-[#0f1520]/50" />
+            <span className="text-[#0f1520]/70 font-medium">Terms &amp; Conditions</span>
           </div>
         </div>
       </div>
