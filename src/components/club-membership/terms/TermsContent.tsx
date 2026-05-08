@@ -22,7 +22,7 @@ function SideNav({ activeId }: { activeId: string }) {
   }
 
   return (
-    <div className="sticky top-[156px] bg-white rounded-2xl border border-[#d0d7e2] overflow-hidden">
+    <div className="sticky top-[190px] bg-white rounded-2xl border border-[#d0d7e2] overflow-hidden">
       <div className="px-5 py-4 border-b border-[#d0d7e2]">
         <p className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#96C83D]">Contents</p>
       </div>
