@@ -91,8 +91,8 @@ export default function LayerThree({ onAddCoverage: openAddCoverage }: { onAddCo
               <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-[#96C83D] to-transparent" />
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none bg-gradient-to-b from-[rgba(150,200,61,0.05)] to-transparent" />
               <div className="relative px-7 py-7">
-                <p className="text-[15px] font-bold text-[#96C83D] mb-3 uppercase tracking-wide">{card.title}</p>
-                <p className="text-[15px] leading-relaxed text-white/65">{card.body}</p>
+                <p className="text-[17px] font-bold text-[#96C83D] mb-3 uppercase tracking-wide">{card.title}</p>
+                <p className="text-[17px] leading-relaxed text-white/65">{card.body}</p>
               </div>
             </motion.div>
           ))}
@@ -102,35 +102,37 @@ export default function LayerThree({ onAddCoverage: openAddCoverage }: { onAddCo
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-4">
 
           {/* Eligibility CTA box */}
-          <div className="bg-[#1a2233] border border-white/8 rounded-xl px-7 py-8 flex flex-col justify-between gap-8">
-            <div>
-              <p className="text-[11px] font-bold tracking-[0.22em] uppercase text-white/40 mb-4">
+          <div className="bg-[#1a2233] border border-white/8 rounded-xl px-8 py-8 flex flex-col sm:flex-row items-center gap-8">
+            {/* Text */}
+            <div className="flex-1">
+              <p className="text-[13px] font-bold tracking-[0.22em] uppercase text-white/40 mb-3">
                 For Existing Customers
               </p>
-              <p className="text-[18px] font-bold text-white leading-snug mb-3">
+              <p className="text-[21px] font-bold text-white leading-snug mb-3">
                 Is your system a SumZero install from the last 4 years?
               </p>
-              <p className="text-[14px] leading-relaxed text-white/55">
+              <p className="text-[16px] leading-relaxed text-white/55">
                 You may be eligible to add PROTECT+ coverage before the enrollment window closes.
               </p>
             </div>
 
-            <div>
+            {/* Button + fine print */}
+            <div className="flex-shrink-0 text-center">
               <button
                 onClick={openAddCoverage}
-                className="w-full border border-white/25 hover:border-white/50 text-white font-bold text-[15px] px-6 py-4 rounded-lg transition-all duration-200 hover:bg-white/5 cursor-pointer mb-4"
+                className="border border-white/25 hover:border-white/50 text-white font-bold text-[15px] px-8 py-4 rounded-lg transition-all duration-200 hover:bg-white/5 cursor-pointer mb-3 whitespace-nowrap"
               >
                 Check Your Eligibility →
               </button>
-              <p className="text-[12px] text-white/35 leading-snug text-center">
+              <p className="text-[12px] text-white/35 leading-snug">
                 No third-party claims process.<br />
                 You call (508) 965-0046 — we fix it.
               </p>
             </div>
           </div>
 
-          {/* Reviews box — lighter background */}
-          <div className="bg-[#2a3a52] border border-white/8 rounded-xl px-6 py-6">
+          {/* Reviews box — lighter background, centered */}
+          <div className="bg-[#2a3a52] border border-white/8 rounded-xl px-6 py-6 flex items-center justify-center">
             <div
               className="elfsight-app-ede031bb-3d61-41d9-832a-f52b234baa35"
               data-elfsight-app-lazy
