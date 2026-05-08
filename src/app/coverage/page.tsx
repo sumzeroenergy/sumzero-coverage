@@ -7,6 +7,7 @@ import InstallationPromise from "@/components/coverage/InstallationPromise"
 import HowItWorks from "@/components/coverage/HowItWorks"
 import LayerOne from "@/components/coverage/LayerOne"
 import LayerTwo from "@/components/coverage/LayerTwo"
+import LayerThree from "@/components/coverage/LayerThree"
 import RequestCallModal, { openRequestCallModal } from "@/components/RequestCallModal"
 import AddCoverageModal, { openAddCoverageModal } from "@/components/AddCoverageModal"
 import BookingModal from "@/components/BookingModal"
@@ -34,6 +35,7 @@ export default function CoveragePage() {
       <HowItWorks />
       <LayerOne />
       <LayerTwo />
+      <LayerThree onAddCoverage={openAddCoverageModal} />
     </main>
   )
 }
