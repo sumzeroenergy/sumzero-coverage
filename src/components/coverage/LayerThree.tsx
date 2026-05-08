@@ -23,7 +23,7 @@ const CARDS = [
   },
 ]
 
-export default function LayerThree() {
+export default function LayerThree({ onAddCoverage: openAddCoverage }: { onAddCoverage: () => void }) {
   return (
     <section className="bg-[#0f1520] py-24">
       <Script src="https://elfsightcdn.com/platform.js" strategy="lazyOnload" />
@@ -98,11 +98,46 @@ export default function LayerThree() {
           ))}
         </motion.div>
 
-        {/* Google Reviews embed */}
-        <div
-          className="elfsight-app-ede031bb-3d61-41d9-832a-f52b234baa35"
-          data-elfsight-app-lazy
-        />
+        {/* Two-column: reviews + eligibility CTA */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-4">
+
+          {/* Reviews box */}
+          <div className="bg-[#1a2233] border border-white/8 rounded-xl px-6 py-6">
+            <div
+              className="elfsight-app-ede031bb-3d61-41d9-832a-f52b234baa35"
+              data-elfsight-app-lazy
+            />
+          </div>
+
+          {/* Eligibility CTA box */}
+          <div className="bg-[#1a2233] border border-white/8 rounded-xl px-7 py-8 flex flex-col justify-between gap-8">
+            <div>
+              <p className="text-[11px] font-bold tracking-[0.22em] uppercase text-white/40 mb-4">
+                For Existing Customers
+              </p>
+              <p className="text-[18px] font-bold text-white leading-snug mb-3">
+                Is your system a SumZero install from the last 4 years?
+              </p>
+              <p className="text-[14px] leading-relaxed text-white/55">
+                You may be eligible to add PROTECT+ coverage before the enrollment window closes.
+              </p>
+            </div>
+
+            <div>
+              <button
+                onClick={openAddCoverage}
+                className="w-full border border-white/25 hover:border-white/50 text-white font-bold text-[15px] px-6 py-4 rounded-lg transition-all duration-200 hover:bg-white/5 cursor-pointer mb-4"
+              >
+                Check Your Eligibility →
+              </button>
+              <p className="text-[12px] text-white/35 leading-snug text-center">
+                No third-party claims process.<br />
+                You call (508) 965-0046 — we fix it.
+              </p>
+            </div>
+          </div>
+
+        </div>
 
       </div>
     </section>
