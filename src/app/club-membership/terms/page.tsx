@@ -1,6 +1,7 @@
 "use client"
 
 import Header from "@/components/layout/Header"
+import Hero from "@/components/club-membership/terms/Hero"
 import BookingModal from "@/components/BookingModal"
 import { openBookingModal } from "@/lib/booking-modal"
 
@@ -15,6 +16,7 @@ export default function ClubMembershipTermsPage() {
         ctaLabel="Join the Club"
         onCtaClick={openBookingModal}
       />
+      <Hero />
     </main>
   )
 }
