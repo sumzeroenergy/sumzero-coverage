@@ -12,12 +12,12 @@ export default function InstallationPromise() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center max-w-[680px] mx-auto py-20"
+          className="text-center max-w-[680px] mx-auto py-28"
         >
-          <p className="text-xs font-bold tracking-[0.25em] uppercase text-[#96C83D] mb-4">
+          <p className="text-sm font-bold tracking-[0.25em] uppercase text-[#96C83D] mb-6">
             The Promise
           </p>
-          <h2 className="text-4xl sm:text-5xl font-black leading-tight tracking-tight text-[#1F2535] mb-6">
+          <h2 className="text-5xl sm:text-6xl font-black leading-tight tracking-tight text-[#1F2535] mb-8">
             Your installation is covered.{" "}
             <span className="text-[#5a6a7e]">Here's the structure.</span>
           </h2>
