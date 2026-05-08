@@ -1,7 +1,6 @@
 "use client"
 
 import Header from "@/components/layout/Header"
-import Hero from "@/components/coverage/welcome/Hero"
 import RequestCallModal, { openRequestCallModal } from "@/components/RequestCallModal"
 import AddCoverageModal, { openAddCoverageModal } from "@/components/AddCoverageModal"
 
@@ -16,10 +15,6 @@ export default function CoverageWelcomePage() {
         navLinks={NAV_LINKS}
         ctaLabel="Add Coverage"
         onCtaClick={openAddCoverageModal}
-      />
-      <Hero
-        onRequestCall={openRequestCallModal}
-        onAddCoverage={openAddCoverageModal}
       />
     </main>
   )
