@@ -85,7 +85,7 @@ export default function MembershipPricing({ onJoinClick }: MembershipPricingProp
 
             <h2 className="text-5xl sm:text-6xl font-black text-[#1F2535] mb-4">
               <StaggeredText
-                as="div"
+                as="span"
                 text="$99 per system, per year."
                 segmentBy="words"
                 direction="bottom"
@@ -96,7 +96,7 @@ export default function MembershipPricing({ onJoinClick }: MembershipPricingProp
                 className="text-[#1F2535]"
               />
               <StaggeredText
-                as="div"
+                as="span"
                 text="Every benefit. No contract."
                 segmentBy="words"
                 direction="bottom"

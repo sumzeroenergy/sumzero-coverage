@@ -157,7 +157,7 @@ export default function MaintenanceUmbrella() {
 
           <h2 className="text-5xl sm:text-6xl font-black text-[#1F2535] mb-4">
             <StaggeredText
-              as="div"
+              as="span"
               text="Three types of work."
               segmentBy="words"
               direction="bottom"
@@ -168,7 +168,7 @@ export default function MaintenanceUmbrella() {
               className="text-[#1F2535]"
             />
             <StaggeredText
-              as="div"
+              as="span"
               text="You always start with the inspection."
               segmentBy="words"
               direction="bottom"

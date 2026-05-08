@@ -47,7 +47,7 @@ export default function SystemsCovered() {
 
             <h2 className="text-5xl sm:text-6xl font-black text-[#1F2535] mb-4">
               <StaggeredText
-                as="div"
+                as="span"
                 text="Every major system"
                 segmentBy="words"
                 direction="bottom"
@@ -58,7 +58,7 @@ export default function SystemsCovered() {
                 className="text-[#1F2535]"
               />
               <StaggeredText
-                as="div"
+                as="span"
                 text="in your home."
                 segmentBy="words"
                 direction="bottom"

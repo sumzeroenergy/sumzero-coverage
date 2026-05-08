@@ -194,7 +194,7 @@ export default function InspectionPoints() {
 
             <h2 className="text-5xl sm:text-6xl font-black text-[#1F2535] mb-4">
               <StaggeredText
-                as="div"
+                as="span"
                 text="What your technician"
                 segmentBy="words"
                 direction="bottom"
@@ -205,7 +205,7 @@ export default function InspectionPoints() {
                 className="text-[#1F2535]"
               />
               <StaggeredText
-                as="div"
+                as="span"
                 text="actually checks."
                 segmentBy="words"
                 direction="bottom"

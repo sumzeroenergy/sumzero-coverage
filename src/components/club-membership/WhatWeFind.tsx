@@ -77,7 +77,7 @@ export default function WhatWeFind() {
 
             <h2 className="text-5xl sm:text-6xl font-black text-[#1F2535] mb-4">
               <StaggeredText
-                as="div"
+                as="span"
                 text="This is what we find."
                 segmentBy="words"
                 direction="bottom"
@@ -88,7 +88,7 @@ export default function WhatWeFind() {
                 className="text-[#1F2535]"
               />
               <StaggeredText
-                as="div"
+                as="span"
                 text="This is what we fix."
                 segmentBy="words"
                 direction="bottom"

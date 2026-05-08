@@ -69,7 +69,7 @@ export default function ProtectCta() {
 
               <h2 className="text-4xl sm:text-5xl font-black text-white leading-[1.1] mb-8">
                 <StaggeredText
-                  as="div"
+                  as="span"
                   text="Want coverage if"
                   segmentBy="words"
                   direction="bottom"
@@ -80,7 +80,7 @@ export default function ProtectCta() {
                   className="text-white"
                 />
                 <StaggeredText
-                  as="div"
+                  as="span"
                   text="something breaks anyway?"
                   segmentBy="words"
                   direction="bottom"
