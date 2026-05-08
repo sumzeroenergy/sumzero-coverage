@@ -33,7 +33,7 @@ export default function FromTheOwners() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <p className="text-xs font-bold tracking-[0.25em] uppercase text-[#96C83D] mb-5">
+            <p className="text-[17px] font-bold tracking-[0.25em] uppercase text-[#96C83D] mb-5">
               From the Owners
             </p>
 
@@ -54,14 +54,14 @@ export default function FromTheOwners() {
 
             {/* Signatures */}
             <div className="flex items-start gap-0 border-t border-[#d0d7e2] pt-7">
-              <div className="flex-1">
-                <p className="text-[16px] font-black text-[#1F2535] mb-1">Ilija Crnobrnja</p>
-                <p className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#5a6a7e]">Founder & CEO</p>
+              <div className="pr-6">
+                <p className="text-[20px] font-black text-[#1F2535] mb-1">Ilija Crnobrnja</p>
+                <p className="text-[12px] font-bold tracking-[0.18em] uppercase text-[#5a6a7e]">Founder & CEO</p>
               </div>
-              <div className="w-px self-stretch bg-[#d0d7e2] mx-8" />
-              <div className="flex-1">
-                <p className="text-[16px] font-black text-[#1F2535] mb-1">David</p>
-                <p className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#5a6a7e]">COO</p>
+              <div className="w-px self-stretch bg-[#d0d7e2] mx-6" />
+              <div className="pl-2">
+                <p className="text-[20px] font-black text-[#1F2535] mb-1">David</p>
+                <p className="text-[12px] font-bold tracking-[0.18em] uppercase text-[#5a6a7e]">COO</p>
               </div>
             </div>
           </motion.div>
