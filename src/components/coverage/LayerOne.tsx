@@ -64,10 +64,31 @@ export default function LayerOne() {
             </div>
           </motion.div>
 
-          {/* Right — image placeholder */}
-          <div className="hidden lg:flex items-center justify-center rounded-2xl bg-[#f1f3f6] min-h-[480px]">
-            <p className="text-[#5a6a7e]/40 text-sm font-mono">image coming soon</p>
-          </div>
+          {/* Right — image + label */}
+          <motion.div
+            initial={{ opacity: 0, x: 24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            className="hidden lg:flex flex-col gap-6"
+          >
+            <Image
+              src="/assets/protect/quality-guarantee.png"
+              alt="SumZero quality guarantee"
+              width={1200}
+              height={900}
+              className="w-full h-auto rounded-2xl object-cover"
+            />
+
+            {/* Label card */}
+            <div className="flex items-start gap-4 bg-[#f1f3f6] rounded-xl px-6 py-5 border-l-4 border-[#96C83D]">
+              <div className="flex-shrink-0 w-2 h-2 rounded-full bg-[#96C83D] mt-2" />
+              <p className="text-[15px] text-[#5a6a7e] leading-relaxed">
+                <span className="font-bold text-[#1F2535]">100% of SumZero installs</span> are tested
+                and documented before the technician leaves the property.
+              </p>
+            </div>
+          </motion.div>
 
         </div>
       </div>
