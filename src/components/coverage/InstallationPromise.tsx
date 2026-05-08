@@ -17,9 +17,9 @@ export default function InstallationPromise() {
           <p className="text-xs font-bold tracking-[0.25em] uppercase text-[#96C83D] mb-4">
             The Promise
           </p>
-          <h2 className="text-3xl sm:text-4xl font-black uppercase leading-tight tracking-tight text-[#1F2535] mb-6">
+          <h2 className="text-4xl sm:text-5xl font-black leading-tight tracking-tight text-[#1F2535] mb-6">
             Your installation is covered.{" "}
-            <span className="text-[#5a6a7e] font-black">Here's the structure.</span>
+            <span className="text-[#5a6a7e]">Here's the structure.</span>
           </h2>
           <p className="text-[17px] leading-relaxed text-[#5a6a7e]">
             Every SumZero installation includes a workmanship guarantee from day one.{" "}

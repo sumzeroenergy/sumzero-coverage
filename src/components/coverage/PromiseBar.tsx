@@ -27,12 +27,12 @@ export default function PromiseBar() {
         <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#e5e8ed]">
           {ITEMS.map(({ icon: Icon, title, desc }) => (
             <div key={title} className="flex items-start gap-5 py-10 px-8 first:pl-0 last:pr-0">
-              <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-[#f1f3f6] flex items-center justify-center mt-0.5">
-                <Icon size={20} className="text-[#5a6a7e]" />
+              <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-[#f1f3f6] flex items-center justify-center mt-0.5">
+                <Icon size={24} className="text-[#5a6a7e]" />
               </div>
               <div>
-                <p className="text-[15px] font-bold text-[#1F2535] mb-2">{title}</p>
-                <p className="text-[13px] text-[#5a6a7e] leading-relaxed">{desc}</p>
+                <p className="text-[17px] font-bold text-[#1F2535] mb-2">{title}</p>
+                <p className="text-[15px] text-[#5a6a7e] leading-relaxed">{desc}</p>
               </div>
             </div>
           ))}
