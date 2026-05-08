@@ -24,7 +24,7 @@ export default function LayerOne() {
             transition={{ duration: 0.5 }}
           >
             {/* Label */}
-            <p className="text-xs font-bold tracking-[0.25em] uppercase text-[#96C83D] mb-4">
+            <p className="text-[22px] font-bold tracking-[0.25em] uppercase text-[#96C83D] mb-4">
               Layer 1 — Built Into Every Install
             </p>
 
@@ -56,9 +56,9 @@ export default function LayerOne() {
                     alt=""
                     width={32}
                     height={32}
-                    className="flex-shrink-0 w-8 h-8"
+                    className="flex-shrink-0 w-12 h-12"
                   />
-                  <span className="text-[16px] text-[#1F2535] leading-snug">{item}</span>
+                  <span className="text-[28px] font-medium text-[#1F2535] leading-snug">{item}</span>
                 </motion.div>
               ))}
             </div>
