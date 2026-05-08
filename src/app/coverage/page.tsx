@@ -9,6 +9,7 @@ import LayerOne from "@/components/coverage/LayerOne"
 import LayerTwo from "@/components/coverage/LayerTwo"
 import LayerThree from "@/components/coverage/LayerThree"
 import Timeline from "@/components/coverage/Timeline"
+import FinalCta from "@/components/coverage/FinalCta"
 import RequestCallModal, { openRequestCallModal } from "@/components/RequestCallModal"
 import AddCoverageModal, { openAddCoverageModal } from "@/components/AddCoverageModal"
 import BookingModal from "@/components/BookingModal"
@@ -38,6 +39,7 @@ export default function CoveragePage() {
       <LayerTwo />
       <LayerThree onAddCoverage={openAddCoverageModal} />
       <Timeline />
+      <FinalCta onJoinClub={openBookingModal} />
     </main>
   )
 }
