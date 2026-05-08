@@ -2,6 +2,7 @@
 
 import Header from "@/components/layout/Header"
 import Hero from "@/components/coverage/Hero"
+import PromiseBar from "@/components/coverage/PromiseBar"
 import RequestCallModal, { openRequestCallModal } from "@/components/RequestCallModal"
 import AddCoverageModal, { openAddCoverageModal } from "@/components/AddCoverageModal"
 import BookingModal from "@/components/BookingModal"
@@ -24,6 +25,7 @@ export default function CoveragePage() {
         onAddCoverage={openAddCoverageModal}
         onJoinClub={openBookingModal}
       />
+      <PromiseBar />
     </main>
   )
 }

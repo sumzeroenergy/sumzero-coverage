@@ -11,7 +11,7 @@ interface HeroProps {
 
 export default function Hero({ onAddCoverage, onJoinClub }: HeroProps) {
   return (
-    <section className="relative overflow-hidden bg-[#0f1520] pt-[210px] pb-24">
+    <section className="relative overflow-hidden bg-[#0f1520] pt-[210px] pb-[74px]">
 
       {/* Dot grid */}
       <div
