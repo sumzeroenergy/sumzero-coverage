@@ -8,7 +8,7 @@ import FirstDays from "@/components/club-membership/welcome/FirstDays"
 import WelcomeFaq from "@/components/club-membership/welcome/Faq"
 import FinalCta from "@/components/club-membership/welcome/FinalCta"
 import BookingModal from "@/components/BookingModal"
-import RequestCallModal from "@/components/RequestCallModal"
+import RequestCallModal, { openRequestCallModal } from "@/components/RequestCallModal"
 import { openBookingModal } from "@/lib/booking-modal"
 
 export default function ClubMembershipWelcomePage() {
@@ -18,8 +18,8 @@ export default function ClubMembershipWelcomePage() {
       <RequestCallModal />
       <Header
         navLinks={[]}
-        ctaLabel="Schedule Inspection"
-        onCtaClick={openBookingModal}
+        ctaLabel="Contact Us"
+        onCtaClick={openRequestCallModal}
       />
       <Hero />
       <FromTheOwner />
