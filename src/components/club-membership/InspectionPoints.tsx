@@ -70,6 +70,27 @@ const TABS = [
     ],
   },
   {
+    label: "Gas Boiler",
+    points: [
+      "Inspect boiler unit",
+      "Inspect and test boiler controls",
+      "Inspect boiler operation",
+      "Inspect heat exchanger for cracks, corrosion, or deterioration",
+      "Inspect burners and burner assembly for wear, debris, and proper alignment",
+      "Inspect and test gas valve operation and pressure",
+      "Inspect flue and venting system for blockages, corrosion, and proper draft",
+      "Inspect combustion air supply and ventilation adequacy",
+      "Inspect and test ignition system (pilot or electronic igniter)",
+      "Inspect circulator pump(s) for operation, leaks, and proper flow",
+      "Inspect expansion tank for proper pressure and waterlogged condition",
+      "Inspect pressure relief valve for condition and proper operation",
+      "Inspect system pressure and water level (fill valve, low-water cutoff)",
+      "Inspect all piping, fittings, and valves for leaks and corrosion",
+      "Inspect thermostat and zone controls for proper operation and calibration",
+      "Perform combustion analysis (CO, CO₂, O₂, flue temperature, and efficiency reading)",
+    ],
+  },
+  {
     label: "Oil System",
     points: [
       "Visual inspection of entire heating system",
@@ -301,10 +322,10 @@ export default function InspectionPoints() {
           {/* Footer note */}
           <div className="mt-6 bg-white border border-[#e8eaed] rounded-lg px-6 py-5">
             <p className="text-[15px] leading-relaxed text-[#5a6a7e]">
-              <span className="font-bold text-[#1F2535]">Seven system types covered. </span>
-              Gas furnace, central AC & heat pump, ductless mini-split, ERV, humidifier, tankless
-              & heat pump water heater, oil heating systems. Additional inspection visits available
-              at $99/system.
+              <span className="font-bold text-[#1F2535]">Eight system types covered. </span>
+              Gas furnace, gas boiler, central AC & heat pump, ductless mini-split, ERV, humidifier,
+              tankless & heat pump water heater, oil heating systems. Additional inspection visits
+              available at $99/system.
             </p>
           </div>
 
