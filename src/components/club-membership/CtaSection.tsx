@@ -15,7 +15,7 @@ export default function CtaSection({ onJoinClick }: CtaSectionProps) {
   return (
     <>
       {/* Geometric divider — white to dark */}
-      <div className="w-full bg-white leading-[0]">
+      <div className="w-full bg-white leading-[0] pt-24">
         <svg
           viewBox="0 0 1440 72"
           preserveAspectRatio="none"
@@ -42,15 +42,15 @@ export default function CtaSection({ onJoinClick }: CtaSectionProps) {
         />
 
         <div className="relative max-w-[90rem] mx-auto px-6 sm:px-10 lg:px-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-end">
+          <div className="relative grid grid-cols-1 lg:grid-cols-2">
 
-            {/* Left — content */}
+            {/* Left — content controls section height */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="py-20"
+              className="py-14"
             >
               <h2 className="text-4xl sm:text-5xl font-black text-white leading-[1.1] mb-6">
                 $99 gets a trained technician in your home.{" "}
@@ -80,14 +80,14 @@ export default function CtaSection({ onJoinClick }: CtaSectionProps) {
               </div>
             </motion.div>
 
-            {/* Right — Dan, bottom flush, head overflows into section above */}
+            {/* Right — absolutely positioned so it doesn't affect section height */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="relative flex items-end self-end overflow-hidden -mr-6 sm:-mr-10 lg:-mr-16"
-              style={{ marginTop: "-96px" }}
+              className="hidden lg:block absolute right-0 bottom-0 overflow-hidden"
+              style={{ right: "-4rem" }}
             >
               <Image
                 src="/assets/club-membership/Dan Club Membership.png"
@@ -96,7 +96,6 @@ export default function CtaSection({ onJoinClick }: CtaSectionProps) {
                 height={780}
                 className="h-[720px] w-auto object-contain object-right-bottom"
               />
-              {/* Gradient fade — blends bottom of photo into section bg */}
               <div
                 className="absolute inset-x-0 bottom-0 h-40 pointer-events-none"
                 style={{ background: "linear-gradient(to top, #0f1520 0%, transparent 100%)" }}
