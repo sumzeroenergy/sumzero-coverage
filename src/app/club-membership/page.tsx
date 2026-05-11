@@ -10,6 +10,7 @@ import MaintenanceUmbrella from "@/components/club-membership/MaintenanceUmbrell
 import MembershipPricing from "@/components/club-membership/MembershipPricing"
 import InspectionPoints from "@/components/club-membership/InspectionPoints"
 import ProtectCta from "@/components/club-membership/ProtectCta"
+import Faq from "@/components/club-membership/Faq"
 import FinalCta from "@/components/club-membership/FinalCta"
 import BookingModal from "@/components/BookingModal"
 import { openBookingModal } from "@/lib/booking-modal"
@@ -43,6 +44,7 @@ export default function ClubMembershipPage() {
       <MembershipPricing onJoinClick={openBookingModal} />
       <InspectionPoints />
       <ProtectCta />
+      <Faq />
       <FinalCta />
     </main>
   )
