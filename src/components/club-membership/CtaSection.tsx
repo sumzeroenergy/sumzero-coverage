@@ -90,7 +90,7 @@ export default function CtaSection({ onJoinClick }: CtaSectionProps) {
               style={{ marginTop: "-96px" }}
             >
               <Image
-                src="/assets/club-membership/dan-technician.png"
+                src="/assets/club-membership/Dan Club Membership.png"
                 alt="Dan — SumZero Service Leader Technician"
                 width={480}
                 height={620}
