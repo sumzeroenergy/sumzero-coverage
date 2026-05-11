@@ -92,9 +92,9 @@ export default function CtaSection({ onJoinClick }: CtaSectionProps) {
               <Image
                 src="/assets/club-membership/Dan Club Membership.png"
                 alt="Dan — SumZero Service Leader Technician"
-                width={480}
-                height={620}
-                className="h-[580px] w-auto object-contain object-right-bottom"
+                width={600}
+                height={780}
+                className="h-[720px] w-auto object-contain object-right-bottom"
               />
               {/* Gradient fade — blends bottom of photo into section bg */}
               <div
