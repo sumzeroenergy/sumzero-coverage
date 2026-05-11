@@ -21,7 +21,7 @@ const STATS = [
     glow: "rgba(79,195,247,0.10)",
   },
   {
-    value: "15%",
+    value: "10%",
     label: "off service & repairs",
     icon: BadgePercent,
     accent: "#96C83D",
