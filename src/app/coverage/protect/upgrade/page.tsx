@@ -12,6 +12,9 @@ import Faq from "@/components/coverage/upgrade/Faq"
 import FinalCta from "@/components/coverage/upgrade/FinalCta"
 import AddCoverageModal, { openAddCoverageModal } from "@/components/AddCoverageModal"
 import RequestCallModal from "@/components/RequestCallModal"
+import { LEAD_SUMMARIES } from "@/lib/lead-summaries"
+
+const openProtectPlus = () => openAddCoverageModal(LEAD_SUMMARIES.PROTECT_PLUS_SUBSCRIPTION)
 
 export default function ProtectUpgradePage() {
   return (
@@ -21,17 +24,17 @@ export default function ProtectUpgradePage() {
       <Header
         navLinks={[]}
         ctaLabel="Get Protected Today"
-        onCtaClick={openAddCoverageModal}
+        onCtaClick={openProtectPlus}
       />
-      <Hero onGetProtected={openAddCoverageModal} />
-      <Pricing onGetProtected={openAddCoverageModal} />
+      <Hero onGetProtected={openProtectPlus} />
+      <Pricing onGetProtected={openProtectPlus} />
       <ClaimCovers />
       <SystemsCovered />
       <HowItWorks />
       <ClubCta />
       <NotCovered />
       <Faq />
-      <FinalCta onGetProtected={openAddCoverageModal} />
+      <FinalCta onGetProtected={openProtectPlus} />
     </main>
   )
 }

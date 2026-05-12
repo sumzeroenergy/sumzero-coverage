@@ -3,6 +3,7 @@
 import { motion } from "motion/react"
 import { Phone, MessageSquare } from "lucide-react"
 import { openRequestCallModal } from "@/components/RequestCallModal"
+import { LEAD_SUMMARIES } from "@/lib/lead-summaries"
 
 interface FinalCtaProps {
   onGetProtected: () => void
@@ -38,7 +39,7 @@ export default function FinalCta({ onGetProtected }: FinalCtaProps) {
               Get Protected Today
             </button>
             <button
-              onClick={openRequestCallModal}
+              onClick={() => openRequestCallModal(LEAD_SUMMARIES.PROTECT_PLUS_CALL_NOW)}
               className="flex items-center gap-2.5 bg-transparent border border-white/20 hover:border-white/40 text-white/70 hover:text-white font-semibold px-10 py-4 rounded-xl transition-all duration-200 hover:-translate-y-0.5 uppercase tracking-wide cursor-pointer"
             >
               <MessageSquare size={16} />

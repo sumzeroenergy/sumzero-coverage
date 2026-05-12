@@ -1,8 +1,9 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "motion/react"
 import { X, CheckCircle } from "lucide-react"
+import confetti from "canvas-confetti"
 
 interface FormState {
   firstName: string
@@ -12,8 +13,8 @@ interface FormState {
 
 const EMPTY: FormState = { firstName: "", lastName: "", phone: "" }
 
-export function openRequestCallModal() {
-  window.dispatchEvent(new CustomEvent("sumzero:open-request-call"))
+export function openRequestCallModal(summaryTitle: string) {
+  window.dispatchEvent(new CustomEvent("sumzero:open-request-call", { detail: { summaryTitle } }))
 }
 
 export default function RequestCallModal() {
@@ -22,9 +23,18 @@ export default function RequestCallModal() {
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
   const [error,   setError]   = useState("")
+  const [summaryTitle, setSummaryTitle] = useState("")
+  const confettiCanvasRef = useRef<HTMLCanvasElement>(null)
 
   useEffect(() => {
-    const handler = () => { setOpen(true); setSuccess(false); setError(""); setForm(EMPTY) }
+    const handler = (e: Event) => {
+      const ce = e as CustomEvent<{ summaryTitle: string }>
+      setOpen(true)
+      setSuccess(false)
+      setError("")
+      setForm(EMPTY)
+      setSummaryTitle(ce.detail?.summaryTitle ?? "")
+    }
     window.addEventListener("sumzero:open-request-call", handler)
     return () => window.removeEventListener("sumzero:open-request-call", handler)
   }, [])
@@ -35,6 +45,24 @@ export default function RequestCallModal() {
     return () => { document.body.style.overflow = "" }
   }, [open])
 
+  useEffect(() => {
+    if (!success || !confettiCanvasRef.current) return
+    const myConfetti = confetti.create(confettiCanvasRef.current, {
+      resize: true,
+      useWorker: false,
+    })
+    myConfetti({
+      particleCount: 60,
+      spread:        70,
+      startVelocity: 25,
+      ticks:         80,
+      origin:        { x: 0.5, y: 0.55 },
+      colors:        ["#96C83D", "#7aaa28", "#4FC3F7", "#1F2535"],
+      gravity:       1.1,
+      scalar:        0.9,
+    })
+  }, [success])
+
   function set(field: keyof FormState, value: string) {
     setForm((f) => ({ ...f, [field]: value }))
   }
@@ -44,10 +72,10 @@ export default function RequestCallModal() {
     setLoading(true)
     setError("")
     try {
-      const res = await fetch("/api/request-call", {
+      const res = await fetch("/api/book-lead", {
         method:  "POST",
         headers: { "Content-Type": "application/json" },
-        body:    JSON.stringify(form),
+        body:    JSON.stringify({ ...form, summaryTitle }),
       })
       if (!res.ok) throw new Error("failed")
       setSuccess(true)
@@ -105,19 +133,23 @@ export default function RequestCallModal() {
               {/* Body */}
               <div className="p-7">
                 {success ? (
-                  <div className="flex flex-col items-center text-center py-6 gap-4">
-                    <div className="w-16 h-16 rounded-full bg-[#eef6db] flex items-center justify-center">
-                      <CheckCircle size={32} className="text-[#96C83D]" />
+                  <div className="relative overflow-hidden flex flex-col items-center text-center py-10 gap-5">
+                    <canvas
+                      ref={confettiCanvasRef}
+                      className="absolute inset-0 w-full h-full pointer-events-none"
+                    />
+                    <div className="relative z-10 w-24 h-24 rounded-full bg-[#eef6db] flex items-center justify-center">
+                      <CheckCircle size={56} className="text-[#96C83D]" />
                     </div>
-                    <h3 className="text-xl font-black text-[#1F2535]">We'll call you shortly.</h3>
-                    <p className="text-[15px] text-[#5a6a7e] max-w-[320px]">
-                      We received your request. A SumZero team member will reach out within one business day.
+                    <h3 className="relative z-10 text-xl font-black text-[#1F2535]">Got it.</h3>
+                    <p className="relative z-10 text-[15px] text-[#5a6a7e] max-w-[320px]">
+                      We received your call request. A SumZero team member will be in touch.
                     </p>
                     <button
                       onClick={() => setOpen(false)}
-                      className="mt-2 bg-[#96C83D] hover:bg-[#7aaa28] text-white font-bold px-8 py-3 rounded-lg transition-colors cursor-pointer"
+                      className="relative z-10 mt-2 bg-[#96C83D] hover:bg-[#7aaa28] text-white font-bold px-8 py-3 rounded-lg transition-colors cursor-pointer"
                     >
-                      Done
+                      Close Window
                     </button>
                   </div>
                 ) : (

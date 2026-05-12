@@ -1,3 +1,3 @@
-export function openBookingModal() {
-  window.dispatchEvent(new CustomEvent("sumzero:open-booking"))
+export function openBookingModal(summaryTitle: string) {
+  window.dispatchEvent(new CustomEvent("sumzero:open-booking", { detail: { summaryTitle } }))
 }

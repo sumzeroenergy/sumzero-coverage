@@ -14,7 +14,7 @@ import Faq from "@/components/club-membership/Faq"
 import FinalCta from "@/components/club-membership/FinalCta"
 import BookingModal from "@/components/BookingModal"
 import { openBookingModal } from "@/lib/booking-modal"
-import TermsModal, { openTermsModal } from "@/components/TermsModal"
+import { LEAD_SUMMARIES } from "@/lib/lead-summaries"
 
 const NAV_LINKS = [
   { label: "Why It Matters",  href: "#why-it-matters" },
@@ -22,26 +22,27 @@ const NAV_LINKS = [
   { label: "How It Works",    href: "#how-it-works" },
   { label: "Pricing",         href: "#pricing" },
   { label: "The Inspection",  href: "#inspection" },
-  { label: "Terms",           href: "#terms", onClick: openTermsModal },
+  { label: "Terms",           href: "#terms", onClick: () => window.open("/club-membership/terms", "_blank", "noopener,noreferrer") },
 ]
+
+const openClubMembership = () => openBookingModal(LEAD_SUMMARIES.CLUB_MEMBERSHIP)
 
 export default function ClubMembershipPage() {
   return (
     <main className="min-h-screen bg-[#0f1520]">
       <BookingModal />
-      <TermsModal />
       <Header
         navLinks={NAV_LINKS}
         ctaLabel="Join the Club"
-        onCtaClick={openBookingModal}
+        onCtaClick={openClubMembership}
       />
-      <Hero onJoinClick={openBookingModal} />
+      <Hero onJoinClick={openClubMembership} />
       <WhyItMatters />
       <WhatWeFind />
-      <CtaSection onJoinClick={openBookingModal} />
+      <CtaSection onJoinClick={openClubMembership} />
       <SystemsCovered />
       <MaintenanceUmbrella />
-      <MembershipPricing onJoinClick={openBookingModal} />
+      <MembershipPricing onJoinClick={openClubMembership} />
       <InspectionPoints />
       <ProtectCta />
       <Faq />

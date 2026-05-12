@@ -1,15 +1,11 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link"
 import { motion } from "motion/react"
 import { ArrowRight, Shield, Users } from "lucide-react"
 
-interface HeroProps {
-  onAddCoverage: () => void
-  onJoinClub:    () => void
-}
-
-export default function Hero({ onAddCoverage, onJoinClub }: HeroProps) {
+export default function Hero() {
   return (
     <section className="relative overflow-hidden bg-[#0f1520] pt-[210px] pb-[74px]">
 
@@ -73,8 +69,8 @@ export default function Hero({ onAddCoverage, onJoinClub }: HeroProps) {
               e.currentTarget.style.borderColor = "rgba(150,200,61,0.18)"
               e.currentTarget.style.boxShadow   = "none"
             }}
-            onClick={onJoinClub}
           >
+            <Link href="/club-membership" className="absolute inset-0 z-10" aria-label="Learn more about Club Membership" />
             {/* Top accent bar */}
             <div className="h-[3px] w-full bg-gradient-to-r from-transparent via-[#96C83D] to-transparent" />
 
@@ -126,8 +122,8 @@ export default function Hero({ onAddCoverage, onJoinClub }: HeroProps) {
               e.currentTarget.style.borderColor = "rgba(79,195,247,0.18)"
               e.currentTarget.style.boxShadow   = "none"
             }}
-            onClick={onAddCoverage}
           >
+            <Link href="/coverage/protect/upgrade" className="absolute inset-0 z-10" aria-label="Learn more about SumZero PROTECT+" />
             {/* Top accent bar — blue for PROTECT+ */}
             <div className="h-[3px] w-full bg-gradient-to-r from-transparent via-[#4FC3F7] to-transparent" />
 

@@ -8,18 +8,21 @@ import EligibleEquipment from "@/components/coverage/welcome/EligibleEquipment"
 import OneCall from "@/components/coverage/welcome/OneCall"
 import WhileYoureHere from "@/components/coverage/welcome/WhileYoureHere"
 import Questions from "@/components/coverage/welcome/Questions"
-import AddCoverageModal, { openAddCoverageModal } from "@/components/AddCoverageModal"
+import RequestCallModal, { openRequestCallModal } from "@/components/RequestCallModal"
+import { LEAD_SUMMARIES } from "@/lib/lead-summaries"
 
 const NAV_LINKS: { label: string; href: string }[] = []
+
+const openSupport = () => openRequestCallModal(LEAD_SUMMARIES.PROTECT_PLUS_MEMBER_SUPPORT)
 
 export default function CoverageWelcomePage() {
   return (
     <main className="min-h-screen bg-[#0f1520]">
-      <AddCoverageModal />
+      <RequestCallModal />
       <Header
         navLinks={NAV_LINKS}
-        ctaLabel="Add Coverage"
-        onCtaClick={openAddCoverageModal}
+        ctaLabel="Talk to Support"
+        onCtaClick={openSupport}
       />
       <Hero />
       <FromTheOwners />

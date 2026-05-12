@@ -3,6 +3,8 @@
 import Image from "next/image"
 import { motion } from "motion/react"
 import { openRequestCallModal } from "@/components/RequestCallModal"
+import { openContactMessageModal } from "@/components/ContactMessageModal"
+import { LEAD_SUMMARIES } from "@/lib/lead-summaries"
 
 export default function FinalCta() {
   return (
@@ -79,17 +81,17 @@ export default function FinalCta() {
           className="flex flex-col sm:flex-row gap-4"
         >
           <button
-            onClick={openRequestCallModal}
+            onClick={() => openRequestCallModal(LEAD_SUMMARIES.CLUB_MEMBERSHIP_CALL_NOW)}
             className="bg-[#96C83D] hover:bg-[#7aaa28] text-[#0f1520] font-bold text-[17px] px-10 py-4 rounded-xl cursor-pointer transition-colors duration-200"
           >
             Request a Call
           </button>
-          <a
-            href="mailto:info@sumzeroenergysystems.com"
+          <button
+            onClick={() => openContactMessageModal(LEAD_SUMMARIES.CLUB_MEMBERSHIP_MESSAGE)}
             className="border border-white/20 hover:border-white/40 text-white/70 hover:text-white font-semibold text-[17px] px-10 py-4 rounded-xl cursor-pointer transition-colors duration-200 text-center"
           >
             Send us a Message
-          </a>
+          </button>
         </motion.div>
 
       </div>

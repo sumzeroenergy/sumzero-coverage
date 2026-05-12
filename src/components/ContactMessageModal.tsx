@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import Image from "next/image"
 import { motion, AnimatePresence } from "motion/react"
 import { X, CheckCircle } from "lucide-react"
 import confetti from "canvas-confetti"
@@ -11,7 +10,6 @@ interface FormState {
   lastName:  string
   email:     string
   phone:     string
-  address:   string
   message:   string
 }
 
@@ -20,15 +18,14 @@ const EMPTY: FormState = {
   lastName:  "",
   email:     "",
   phone:     "",
-  address:   "",
   message:   "",
 }
 
-export function openAddCoverageModal(summaryTitle: string) {
-  window.dispatchEvent(new CustomEvent("sumzero:open-add-coverage", { detail: { summaryTitle } }))
+export function openContactMessageModal(summaryTitle: string) {
+  window.dispatchEvent(new CustomEvent("sumzero:open-contact-message", { detail: { summaryTitle } }))
 }
 
-export default function AddCoverageModal() {
+export default function ContactMessageModal() {
   const [open,    setOpen]    = useState(false)
   const [form,    setForm]    = useState<FormState>(EMPTY)
   const [loading, setLoading] = useState(false)
@@ -46,9 +43,15 @@ export default function AddCoverageModal() {
       setForm(EMPTY)
       setSummaryTitle(ce.detail?.summaryTitle ?? "")
     }
-    window.addEventListener("sumzero:open-add-coverage", handler)
-    return () => window.removeEventListener("sumzero:open-add-coverage", handler)
+    window.addEventListener("sumzero:open-contact-message", handler)
+    return () => window.removeEventListener("sumzero:open-contact-message", handler)
   }, [])
+
+  useEffect(() => {
+    if (open) document.body.style.overflow = "hidden"
+    else      document.body.style.overflow = ""
+    return () => { document.body.style.overflow = "" }
+  }, [open])
 
   useEffect(() => {
     if (!success || !confettiCanvasRef.current) return
@@ -67,12 +70,6 @@ export default function AddCoverageModal() {
       scalar:        0.9,
     })
   }, [success])
-
-  useEffect(() => {
-    if (open) document.body.style.overflow = "hidden"
-    else      document.body.style.overflow = ""
-    return () => { document.body.style.overflow = "" }
-  }, [open])
 
   function set(field: keyof FormState, value: string) {
     setForm((f) => ({ ...f, [field]: value }))
@@ -126,23 +123,19 @@ export default function AddCoverageModal() {
               style={{ boxShadow: "0 24px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(150,200,61,0.15)" }}
             >
               {/* Header */}
-              <div className="relative bg-[#0f1520] rounded-t-2xl flex flex-col items-center justify-center px-7 py-8">
+              <div className="relative bg-[#0f1520] flex items-center justify-between px-7 py-6 flex-shrink-0">
+                <div>
+                  <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#96C83D] mb-0.5">
+                    Club Membership
+                  </p>
+                  <h2 className="text-lg font-black text-white">Send Us a Message</h2>
+                </div>
                 <button
                   onClick={() => setOpen(false)}
-                  className="absolute top-4 right-4 text-white/40 hover:text-white transition-colors cursor-pointer"
+                  className="text-white/40 hover:text-white transition-colors cursor-pointer"
                 >
                   <X size={20} />
                 </button>
-                <Image
-                  src="/assets/protect/protect-title-logo.png"
-                  alt="SumZero Extended Labor Warranty"
-                  width={320}
-                  height={131}
-                  className="h-auto w-auto max-w-[280px] object-contain"
-                />
-                <p className="text-[14px] text-white/50 mt-3">
-                  We'll reach out to confirm your coverage details.
-                </p>
               </div>
 
               {/* Body */}
@@ -156,9 +149,9 @@ export default function AddCoverageModal() {
                     <div className="relative z-10 w-24 h-24 rounded-full bg-[#eef6db] flex items-center justify-center">
                       <CheckCircle size={56} className="text-[#96C83D]" />
                     </div>
-                    <h3 className="relative z-10 text-xl font-black text-[#1F2535]">Request received.</h3>
+                    <h3 className="relative z-10 text-xl font-black text-[#1F2535]">Got it.</h3>
                     <p className="relative z-10 text-[15px] text-[#5a6a7e] max-w-[360px]">
-                      We'll reach out shortly to confirm your coverage details and get you set up.
+                      Your message has been received. A SumZero team member will follow up shortly.
                     </p>
                     <button
                       onClick={() => setOpen(false)}
@@ -169,6 +162,10 @@ export default function AddCoverageModal() {
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                    <p className="text-[14px] text-[#5a6a7e] mb-1">
+                      Send us a message and we'll get back to you by call, email, or text — whichever you prefer.
+                    </p>
+
                     <div className="grid grid-cols-2 gap-4">
                       <div>
                         <label className="block text-[13px] font-semibold text-[#1F2535] mb-1.5">
@@ -228,24 +225,12 @@ export default function AddCoverageModal() {
 
                     <div>
                       <label className="block text-[13px] font-semibold text-[#1F2535] mb-1.5">
-                        Address
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="123 Main St, Holliston, MA"
-                        value={form.address}
-                        onChange={(e) => set("address", e.target.value)}
-                        className={inputClass}
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-[13px] font-semibold text-[#1F2535] mb-1.5">
-                        Message <span className="text-[#5a6a7e] font-normal">(optional)</span>
+                        Message <span className="text-[#96C83D]">*</span>
                       </label>
                       <textarea
-                        rows={3}
-                        placeholder="Tell us about your system or any questions about coverage..."
+                        rows={4}
+                        required
+                        placeholder="Let us know how we can help…"
                         value={form.message}
                         onChange={(e) => set("message", e.target.value)}
                         className={`${inputClass} resize-none`}
@@ -263,12 +248,8 @@ export default function AddCoverageModal() {
                       disabled={loading}
                       className="w-full bg-[#96C83D] hover:bg-[#7aaa28] disabled:opacity-60 text-white font-bold py-4 rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-[#96C83D]/30 hover:-translate-y-0.5 active:translate-y-0 uppercase tracking-wide cursor-pointer mt-1"
                     >
-                      {loading ? "Sending…" : "Add My Coverage"}
+                      {loading ? "Sending…" : "Send Message"}
                     </button>
-
-                    <p className="text-[12px] text-[#5a6a7e] text-center">
-                      We'll call you to confirm. No charge until your inspection is complete.
-                    </p>
                   </form>
                 )}
               </div>

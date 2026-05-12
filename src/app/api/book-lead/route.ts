@@ -1,11 +1,13 @@
 import { NextRequest, NextResponse } from "next/server"
 
-const ST_AUTH_URL  = "https://auth.servicetitan.io/connect/token"
-const ST_API_BASE  = "https://api.servicetitan.io"
-const TENANT_ID    = process.env.SERVICETITAN_TENANT_ID!
-const CLIENT_ID    = process.env.SERVICETITAN_CLIENT_ID!
-const CLIENT_SECRET = process.env.SERVICETITAN_CLIENT_SECRET!
-const APP_KEY      = process.env.SERVICETITAN_APP_KEY!
+const ST_AUTH_URL    = "https://auth.servicetitan.io/connect/token"
+const ST_API_BASE    = "https://api.servicetitan.io"
+const TENANT_ID      = process.env.SERVICETITAN_TENANT_ID!
+const CLIENT_ID      = process.env.SERVICETITAN_CLIENT_ID!
+const CLIENT_SECRET  = process.env.SERVICETITAN_CLIENT_SECRET!
+const APP_KEY        = process.env.SERVICETITAN_APP_KEY!
+const PROVIDER_ID    = process.env.SERVICETITAN_BOOKING_PROVIDER_ID!
+const CAMPAIGN_ID    = Number(process.env.SERVICETITAN_CAMPAIGN_ID!)
 
 async function getAccessToken(): Promise<string> {
   const res = await fetch(ST_AUTH_URL, {
@@ -24,37 +26,41 @@ async function getAccessToken(): Promise<string> {
 
 export async function POST(req: NextRequest) {
   try {
-    const { firstName, lastName, email, phone, address, message } = await req.json()
+    const { firstName, lastName, email, phone, address, message, summaryTitle } = await req.json()
 
-    if (!firstName || !lastName || !email || !phone) {
+    if (!firstName || !lastName || !phone || !summaryTitle) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 })
     }
 
     const token = await getAccessToken()
 
+    const summary = message
+      ? `${summaryTitle}\nVISITOR MESSAGE:\n${message}`
+      : summaryTitle
+
+    const body = [
+      address && `Address provided: ${address}`,
+      message && `Visitor message: ${message}`,
+    ].filter(Boolean).join("\n") || summaryTitle
+
+    const contacts: { type: string; value: string; memo?: string }[] = [
+      { type: "Phone", value: phone.replace(/\D/g, ""), memo: "Mobile" },
+    ]
+    if (email) contacts.unshift({ type: "Email", value: email })
+
     const payload = {
-      summary: "Comfort Club Membership — Website Inquiry",
+      externalId:        crypto.randomUUID(),
+      source:            "SumZero Coverage Website",
+      name:              `${firstName} ${lastName}`,
+      summary,
+      body,
+      campaignId:        CAMPAIGN_ID,
       isFirstTimeClient: true,
-      name: `${firstName} ${lastName}`,
-      contacts: [
-        { type: "Email", value: email },
-        { type: "Phone", value: phone.replace(/\D/g, ""), memo: "Mobile" },
-      ],
-      ...(address && {
-        address: {
-          street:  address,
-          city:    "",
-          state:   "MA",
-          zip:     "",
-          country: "USA",
-        },
-      }),
-      ...(message && { note: message }),
-      source: "SumZero Club Membership Page",
+      contacts,
     }
 
     const bookingRes = await fetch(
-      `${ST_API_BASE}/booking/v2/tenant/${TENANT_ID}/bookings`,
+      `${ST_API_BASE}/crm/v2/tenant/${TENANT_ID}/booking-provider/${PROVIDER_ID}/bookings`,
       {
         method: "POST",
         headers: {
@@ -68,7 +74,7 @@ export async function POST(req: NextRequest) {
 
     if (!bookingRes.ok) {
       const err = await bookingRes.text()
-      console.error("ST booking error:", err)
+      console.error("ST booking error:", bookingRes.status, err)
       return NextResponse.json({ error: "Booking failed" }, { status: 502 })
     }
 

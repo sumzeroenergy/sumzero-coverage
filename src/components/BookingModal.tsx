@@ -1,9 +1,10 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import { motion, AnimatePresence } from "motion/react"
 import { X, CheckCircle } from "lucide-react"
+import confetti from "canvas-confetti"
 
 interface FormState {
   firstName: string
@@ -29,12 +30,39 @@ export default function BookingModal() {
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
   const [error,   setError]   = useState("")
+  const [summaryTitle, setSummaryTitle] = useState("")
+  const confettiCanvasRef = useRef<HTMLCanvasElement>(null)
 
   useEffect(() => {
-    const handler = () => { setOpen(true); setSuccess(false); setError(""); setForm(EMPTY) }
+    const handler = (e: Event) => {
+      const ce = e as CustomEvent<{ summaryTitle: string }>
+      setOpen(true)
+      setSuccess(false)
+      setError("")
+      setForm(EMPTY)
+      setSummaryTitle(ce.detail?.summaryTitle ?? "")
+    }
     window.addEventListener("sumzero:open-booking", handler)
     return () => window.removeEventListener("sumzero:open-booking", handler)
   }, [])
+
+  useEffect(() => {
+    if (!success || !confettiCanvasRef.current) return
+    const myConfetti = confetti.create(confettiCanvasRef.current, {
+      resize: true,
+      useWorker: false,
+    })
+    myConfetti({
+      particleCount: 60,
+      spread:        70,
+      startVelocity: 25,
+      ticks:         80,
+      origin:        { x: 0.5, y: 0.55 },
+      colors:        ["#96C83D", "#7aaa28", "#4FC3F7", "#1F2535"],
+      gravity:       1.1,
+      scalar:        0.9,
+    })
+  }, [success])
 
   useEffect(() => {
     if (open) document.body.style.overflow = "hidden"
@@ -54,7 +82,7 @@ export default function BookingModal() {
       const res = await fetch("/api/book-lead", {
         method:  "POST",
         headers: { "Content-Type": "application/json" },
-        body:    JSON.stringify(form),
+        body:    JSON.stringify({ ...form, summaryTitle }),
       })
       if (!res.ok) throw new Error("failed")
       setSuccess(true)
@@ -116,20 +144,24 @@ export default function BookingModal() {
               {/* Body */}
               <div className="p-7">
                 {success ? (
-                  <div className="flex flex-col items-center text-center py-8 gap-4">
-                    <div className="w-16 h-16 rounded-full bg-[#eef6db] flex items-center justify-center">
-                      <CheckCircle size={32} className="text-[#96C83D]" />
+                  <div className="relative overflow-hidden flex flex-col items-center text-center py-10 gap-5">
+                    <canvas
+                      ref={confettiCanvasRef}
+                      className="absolute inset-0 w-full h-full pointer-events-none"
+                    />
+                    <div className="relative z-10 w-24 h-24 rounded-full bg-[#eef6db] flex items-center justify-center">
+                      <CheckCircle size={56} className="text-[#96C83D]" />
                     </div>
-                    <h3 className="text-xl font-black text-[#1F2535]">You're on the list.</h3>
-                    <p className="text-[15px] text-[#5a6a7e] max-w-[360px]">
+                    <h3 className="relative z-10 text-xl font-black text-[#1F2535]">You're on the list.</h3>
+                    <p className="relative z-10 text-[15px] text-[#5a6a7e] max-w-[360px]">
                       We received your request and will call you shortly to confirm your
                       first inspection. Welcome to the Comfort Club.
                     </p>
                     <button
                       onClick={() => setOpen(false)}
-                      className="mt-2 bg-[#96C83D] hover:bg-[#7aaa28] text-white font-bold px-8 py-3 rounded-lg transition-colors cursor-pointer"
+                      className="relative z-10 mt-2 bg-[#96C83D] hover:bg-[#7aaa28] text-white font-bold px-8 py-3 rounded-lg transition-colors cursor-pointer"
                     >
-                      Done
+                      Close Window
                     </button>
                   </div>
                 ) : (
@@ -228,11 +260,11 @@ export default function BookingModal() {
                       disabled={loading}
                       className="w-full bg-[#96C83D] hover:bg-[#7aaa28] disabled:opacity-60 text-white font-bold py-4 rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-[#96C83D]/30 hover:-translate-y-0.5 active:translate-y-0 uppercase tracking-wide cursor-pointer mt-1"
                     >
-                      {loading ? "Sending…" : "Request My Inspection"}
+                      {loading ? "Sending…" : "Yes, I'd Like to Learn More"}
                     </button>
 
                     <p className="text-[12px] text-[#5a6a7e] text-center">
-                      We'll call you to confirm. No charge until your inspection is complete.
+                      No commitment, no charge today · We'll learn about your home and recommend the right plan for you.
                     </p>
                   </form>
                 )}

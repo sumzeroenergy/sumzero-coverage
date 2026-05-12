@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react"
 import { openBookingModal } from "@/lib/booking-modal"
+import { LEAD_SUMMARIES } from "@/lib/lead-summaries"
 
 export default function FinalCta() {
   return (
@@ -49,7 +50,7 @@ export default function FinalCta() {
           className="mt-10 flex flex-col items-center gap-4"
         >
           <button
-            onClick={openBookingModal}
+            onClick={() => openBookingModal(LEAD_SUMMARIES.CLUB_MEMBERSHIP)}
             className="bg-[#96C83D] hover:bg-[#7aaa28] text-white font-black text-[15px] uppercase tracking-widest px-12 py-5 rounded-xl transition-all duration-200 hover:shadow-[0_0_40px_rgba(150,200,61,0.4)] hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
           >
             Join the Club Now

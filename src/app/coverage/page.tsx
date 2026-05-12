@@ -14,8 +14,12 @@ import RequestCallModal, { openRequestCallModal } from "@/components/RequestCall
 import AddCoverageModal, { openAddCoverageModal } from "@/components/AddCoverageModal"
 import BookingModal from "@/components/BookingModal"
 import { openBookingModal } from "@/lib/booking-modal"
+import { LEAD_SUMMARIES } from "@/lib/lead-summaries"
 
 const NAV_LINKS: { label: string; href: string }[] = []
+
+const openProtectPlus    = () => openAddCoverageModal(LEAD_SUMMARIES.PROTECT_PLUS)
+const openClubMembership = () => openBookingModal(LEAD_SUMMARIES.CLUB_MEMBERSHIP)
 
 export default function CoveragePage() {
   return (
@@ -26,20 +30,17 @@ export default function CoveragePage() {
       <Header
         navLinks={NAV_LINKS}
         ctaLabel="Add Coverage"
-        onCtaClick={openAddCoverageModal}
+        onCtaClick={openProtectPlus}
       />
-      <Hero
-        onAddCoverage={openAddCoverageModal}
-        onJoinClub={openBookingModal}
-      />
+      <Hero />
       <PromiseBar />
       <InstallationPromise />
       <HowItWorks />
       <LayerOne />
       <LayerTwo />
-      <LayerThree onAddCoverage={openAddCoverageModal} />
+      <LayerThree onAddCoverage={openProtectPlus} />
       <Timeline />
-      <FinalCta onJoinClub={openBookingModal} />
+      <FinalCta onJoinClub={openClubMembership} />
     </main>
   )
 }
