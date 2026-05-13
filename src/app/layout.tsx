@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import DevNav from "@/components/DevNav";
@@ -30,7 +31,9 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         {children}
-        <DevNav />
+        <Suspense fallback={null}>
+          <DevNav />
+        </Suspense>
       </body>
     </html>
   );

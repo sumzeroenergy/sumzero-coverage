@@ -1,6 +1,10 @@
 "use client"
 
 import Link from "next/link"
+import { useEffect, useState } from "react"
+import { useSearchParams } from "next/navigation"
+
+const STORAGE_KEY = "sumzero:devnav"
 
 const PROTECT = [
   { label: "Coverage",         href: "/coverage" },
@@ -16,6 +20,26 @@ const CLUB = [
 ]
 
 export default function DevNav() {
+  const searchParams = useSearchParams()
+  const [active, setActive] = useState(false)
+
+  useEffect(() => {
+    const param = searchParams.get("menu")
+    if (param === "active") {
+      sessionStorage.setItem(STORAGE_KEY, "1")
+      setActive(true)
+      return
+    }
+    if (param === "off") {
+      sessionStorage.removeItem(STORAGE_KEY)
+      setActive(false)
+      return
+    }
+    setActive(sessionStorage.getItem(STORAGE_KEY) === "1")
+  }, [searchParams])
+
+  if (!active) return null
+
   return (
     <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-[9999] flex items-center gap-1 bg-black/80 backdrop-blur-sm border border-white/10 rounded-full px-3 py-2">
       <span className="text-[10px] font-bold text-blue-400 uppercase tracking-widest px-2">PROTECT+</span>
