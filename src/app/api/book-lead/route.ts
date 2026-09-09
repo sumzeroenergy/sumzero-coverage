@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"
+import { postLeadToSlack } from "@/lib/slack"
 
 const ST_AUTH_URL    = "https://auth.servicetitan.io/connect/token"
 const ST_API_BASE    = "https://api.servicetitan.io"
@@ -75,10 +76,18 @@ export async function POST(req: NextRequest) {
     if (!bookingRes.ok) {
       const err = await bookingRes.text()
       console.error("ST booking error:", bookingRes.status, err)
+      // O lead não pode sumir só porque o ServiceTitan recusou.
+      await postLeadToSlack({ firstName, lastName, phone, email, address, message, summaryTitle })
       return NextResponse.json({ error: "Booking failed" }, { status: 502 })
     }
 
     const result = await bookingRes.json()
+
+    await postLeadToSlack({
+      firstName, lastName, phone, email, address, message, summaryTitle,
+      bookingId: result.id,
+    })
+
     return NextResponse.json({ success: true, id: result.id })
   } catch (err) {
     console.error("book-lead error:", err)
