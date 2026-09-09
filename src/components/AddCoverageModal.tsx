@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import { motion, AnimatePresence } from "motion/react"
 import { X, CheckCircle } from "lucide-react"
+import { leadTracking } from "@/lib/utm"
 import confetti from "canvas-confetti"
 
 interface FormState {
@@ -86,7 +87,7 @@ export default function AddCoverageModal() {
       const res = await fetch("/api/book-lead", {
         method:  "POST",
         headers: { "Content-Type": "application/json" },
-        body:    JSON.stringify({ ...form, summaryTitle }),
+        body:    JSON.stringify({ ...form, summaryTitle, ...leadTracking() }),
       })
       if (!res.ok) throw new Error("failed")
       setSuccess(true)

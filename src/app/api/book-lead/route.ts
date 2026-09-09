@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import { postLeadToSlack } from "@/lib/slack"
+import { normalizaUtm, utmParaResumo } from "@/lib/utm"
 
 const ST_AUTH_URL    = "https://auth.servicetitan.io/connect/token"
 const ST_API_BASE    = "https://api.servicetitan.io"
@@ -27,7 +28,7 @@ async function getAccessToken(): Promise<string> {
 
 export async function POST(req: NextRequest) {
   try {
-    const { firstName, lastName, email, phone, address, message, summaryTitle } = await req.json()
+    const { firstName, lastName, email, phone, address, message, summaryTitle, utm, pageUrl } = await req.json()
 
     if (!firstName || !lastName || !phone || !summaryTitle) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 })
@@ -35,9 +36,11 @@ export async function POST(req: NextRequest) {
 
     const token = await getAccessToken()
 
-    const summary = message
+    const atribuicao = normalizaUtm(pageUrl, utm)
+
+    const summary = (message
       ? `${summaryTitle}\nVISITOR MESSAGE:\n${message}`
-      : summaryTitle
+      : summaryTitle) + utmParaResumo(atribuicao)
 
     const body = [
       address && `Address provided: ${address}`,
@@ -77,7 +80,7 @@ export async function POST(req: NextRequest) {
       const err = await bookingRes.text()
       console.error("ST booking error:", bookingRes.status, err)
       // O lead não pode sumir só porque o ServiceTitan recusou.
-      await postLeadToSlack({ firstName, lastName, phone, email, address, message, summaryTitle })
+      await postLeadToSlack({ firstName, lastName, phone, email, address, message, summaryTitle, utm: atribuicao, pageUrl })
       return NextResponse.json({ error: "Booking failed" }, { status: 502 })
     }
 
@@ -85,6 +88,7 @@ export async function POST(req: NextRequest) {
 
     await postLeadToSlack({
       firstName, lastName, phone, email, address, message, summaryTitle,
+      utm: atribuicao, pageUrl,
       bookingId: result.id,
     })
 

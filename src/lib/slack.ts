@@ -17,6 +17,8 @@ export const LEAD_OUTCOMES = [
 export const OUTCOME_BLOCK_ID  = "lead_outcome"
 export const OUTCOME_ACTION_ID = "set_outcome"
 
+import { utmPares, type Utm } from "@/lib/utm"
+
 type Block = Record<string, unknown>
 
 export interface SlackLead {
@@ -28,6 +30,8 @@ export interface SlackLead {
   message?:     string
   summaryTitle: string
   bookingId?:   string | number
+  utm?:         Utm | null
+  pageUrl?:     string
 }
 
 export function outcomeOption(o: (typeof LEAD_OUTCOMES)[number]) {
@@ -41,6 +45,16 @@ function cell(text: string) {
   return { type: "raw_text", text }
 }
 
+/** Célula com link clicável — só o `rich_text` aceita âncora dentro da tabela. */
+function linkCell(url: string, label: string) {
+  return {
+    type: "rich_text",
+    elements: [
+      { type: "rich_text_section", elements: [{ type: "link", url, text: label }] },
+    ],
+  }
+}
+
 export function buildLeadBlocks(lead: SlackLead, selected = "new"): Block[] {
   const name = `${lead.firstName} ${lead.lastName}`.trim()
 
@@ -51,10 +65,16 @@ export function buildLeadBlocks(lead: SlackLead, selected = "new"): Block[] {
   if (lead.address)   rows.push([cell("Address"), cell(lead.address)])
   if (lead.message)   rows.push([cell("Comments"), cell(lead.message)])
   rows.push([cell("Request"), cell(lead.summaryTitle)])
-  rows.push([
-    cell("ServiceTitan"),
-    cell(lead.bookingId ? `#${lead.bookingId}` : "failed — not booked"),
-  ])
+  if (lead.pageUrl) rows.push([cell("Page"), linkCell(lead.pageUrl, lead.pageUrl)])
+
+  // Uma linha por tag preenchida. Sem UTM na URL, o card fica como sempre foi.
+  for (const [rotulo, valor] of utmPares(lead.utm)) {
+    rows.push([cell(rotulo), cell(valor)])
+  }
+
+  // Só entra quando o ServiceTitan recusou — aí o card é o único registro do
+  // lead e quem lê o canal precisa saber que ninguém lançou no CRM.
+  if (!lead.bookingId) rows.push([cell("ServiceTitan"), cell("failed — not booked")])
 
   const radio: Block = {
     type:      "radio_buttons",
